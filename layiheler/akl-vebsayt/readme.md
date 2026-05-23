@@ -1,4 +1,4 @@
-# AKL Vebsaty
+# AKL Vebsayt
 Bu layihə Dərs 4-ə qədər olan mövzuları və əlavə olaraq animasiya kodlarını əhatə edir
 
 
