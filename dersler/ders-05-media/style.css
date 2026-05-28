@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+
+  padding: 40px;
+}
+
+.main-title {
+  text-align: center;
+
+  margin-bottom: 60px;
+
+  font-size: 42px;
+}
+
+.component-section {
+  margin-bottom: 80px;
+}
+
+.component-section h2 {
+  margin-bottom: 25px;
+
+  color: cyan;
+}
+
+.animated-btn {
+  padding: 15px 30px;
+
+  border: none;
+  border-radius: 10px;
+
+  background-color: cyan;
+  color: black;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  transition: 0.3s;
+}
+
+.animated-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+
+  box-shadow: 0 0 20px cyan;
+}
+
+.music-card {
+  width: 350px;
+
+  background-color: #1b1b1b;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  transition: 0.4s;
+}
+
+.music-card img {
+  width: 100%;
+
+  transition: 0.4s;
+}
+
+.music-card:hover {
+  transform: scale(1.03);
+
+  background-color: #222;
+}
+
+.music-card:hover img {
+  transform: scale(1.1);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h3 {
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  margin-bottom: 15px;
+
+  line-height: 1.6;
+}
+
+.card-content button {
+  padding: 10px 20px;
+
+  border: none;
+
+  background-color: cyan;
+
+  cursor: pointer;
+
+  border-radius: 8px;
+
+  transition: 0.3s;
+}
+
+.card-content button:hover {
+  transform: scale(1.05);
+}
+
+.spinner {
+  width: 70px;
+  height: 70px;
+
+  border: 8px solid #333;
+  border-top: 8px solid cyan;
+
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.notification {
+  padding: 20px;
+
+  border-radius: 12px;
+
+  margin-bottom: 20px;
+
+  width: 350px;
+
+  transition: 0.3s;
+}
+
+.notification:hover {
+  transform: translateX(10px);
+}
+
+.success {
+  background-color: #14532d;
+}
+
+.error {
+  background-color: #7f1d1d;
+}
+
+.profile-card {
+  width: 250px;
+
+  background-color: #1b1b1b;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  text-align: center;
+
+  transition: 0.4s;
+}
+
+.profile-card img {
+  width: 120px;
+  height: 120px;
+
+  border-radius: 50%;
+
+  margin-bottom: 20px;
+
+  transition: 0.4s;
+}
+
+.profile-card:hover {
+  transform: translateY(-10px);
+}
+
+.profile-card:hover img {
+  transform: rotate(5deg) scale(1.05);
+}
+
+.profile-card p {
+  margin-top: 10px;
+
+  color: #aaa;
+}
+
+.navbar {
+  display: flex;
+
+  gap: 25px;
+
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  color: white;
+
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: cyan;
+
+  transform: scale(1.1);
+}
+
+.seherler {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+
+  .music-card,
+  .notification,
+  .profile-card {
+    width: 100%;
+  }
+
+  .main-title {
+    font-size: 30px;
+  }
+  .seherler {
+    display: grid;
+    grid-template-columns: 1fr ;
+  }
+}
