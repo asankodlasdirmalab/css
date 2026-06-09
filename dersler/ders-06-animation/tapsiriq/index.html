@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CSS @keyframes Tapşırıqlar</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: hsl(225, 21%, 7%);
+  color: #fff;
+  padding: 30px;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 40px;
+}
+
+.demo-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  margin-top: 10px;
+}
+
+.box {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #7c6cfa, #fa6c9f);
+  border-radius: 10px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-50px); }
+}
+
+.bounce-box {
+  animation-name: bounce;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes zoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.6); }
+  100% { transform: scale(1); }
+}
+
+.zoom-box {
+  animation-name: zoom;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 6px solid #2a2d3a;
+  border-top-color: #7c6cfa;
+  animation-name: spin;
+  animation-duration: 0.9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes discount {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.discount-banner {
+  background: linear-gradient(90deg, #e63946, #c1121f);
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  animation-name: discount;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.pulse-btn {
+  padding: 12px 28px;
+  background: #e63946;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  animation-name: pulse;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dot {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: #7c6cfa;
+  border-radius: 50%;
+  animation-name: dot;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.dots {
+  display: flex;
+  gap: 10px;
+}
+
+.d2 {
+  animation-delay: 0.15s;
+}
+
+.d3 {
+  animation-delay: 0.3s;
+}
+
+@keyframes text {
+  0% {
+    transform: scale(0.6);
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    letter-spacing: 0.25em;
+    opacity: 1;
+  }
+}
+
+.brand-text {
+  font-size: 28px;
+  font-weight: 900;
+  animation-name: text;
+  animation-duration: 1.4s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes notif {
+  0% {
+    transform: translateX(120%) scale(0.9);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(-10px) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.notif {
+  background: #1a1d27;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border-left: 4px solid #2dc653;
+  animation-name: notif;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.5s;
+  animation-fill-mode: both;
+}
+```
+
+
+</style>
+</head>
+
+<body>
+
+<h1>CSS Animasiyalar</h1>
+
+<div class="demo-area">
+  <div class="box bounce-box"></div>
+</div>
+
+<div class="demo-area">
+  <div class="box zoom-box"></div>
+</div>
+
+<div class="demo-area">
+  <div class="spinner"></div>
+</div>
+
+<div class="demo-area">
+  <div class="discount-banner">🔥 50% Endirim</div>
+</div>
+
+<div class="demo-area">
+  <button class="pulse-btn">İNDİ AL</button>
+</div>
+
+<div class="demo-area dots">
+  <div class="dot"></div>
+  <div class="dot d2"></div>
+  <div class="dot d3"></div>
+</div>
+
+
+</body>
+</html>
