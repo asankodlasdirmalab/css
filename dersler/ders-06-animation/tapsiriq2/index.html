@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master UI Animations Reference Hub</title>
+  <style>
+    /* Global Setup */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    body {
+      background-color: #0b0f19;
+      color: #f8fafc;
+      padding: 40px;
+    }
+
+    /* Grid Layout for the 20 Elements */
+    .animation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .animation-group {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 180px;
+    }
+
+    .group-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #38bdf8;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      margin-top: 15px;
+      overflow: hidden;
+    }
+
+    /* ========================================================
+       BUTTON & INTERACTIVE ELEMENTS (1 - 6)
+       ======================================================== */
+    
+    /* 1. Scale Pulse Button */
+    .btn-scale-pulse {
+      padding: 12px 24px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      animation: pressPulse 2s infinite ease-in-out;
+    }
+    @keyframes pressPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
+    }
+
+    /* 2. Slide Shimmer Fill */
+    .btn-shimmer-sweep {
+      position: relative;
+      padding: 12px 24px;
+      background: #10b981;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .btn-shimmer-sweep::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transform: skewX(-20deg);
+      animation: sweep 2.5s infinite linear;
+    }
+    @keyframes sweep {
+      0% { left: -100%; }
+      50%, 100% { left: 150%; }
+    }
+
+    /* 3. Infinite Floating Lift */
+    .element-float {
+      padding: 12px 24px;
+      background: #ef4444;
+      color: white;
+      border-radius: 6px;
+      font-weight: bold;
+      animation: floatUp 2s infinite ease-in-out;
+    }
+    @keyframes floatUp {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+    }
+
+    /* 4. Elastic Bounce Press */
+    .btn-bounce {
+      padding: 12px 24px;
+      background: #f59e0b;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      animation: elasticBounce 1.5s infinite;
+    }
+    @keyframes elasticBounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-15px); }
+      60% { transform: translateY(-7px); }
+    }
+
+    /* 5. Outline Growth Fill */
+    .btn-outline-grow {
+      padding: 12px 24px;
+      background: transparent;
+      color: #a855f7;
+      border: 2px solid #a855f7;
+      border-radius: 6px;
+      font-weight: bold;
+      position: relative;
+      animation: outlinePulse 2s infinite;
+    }
+    @keyframes outlinePulse {
+      0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.5); }
+      70% { box-shadow: 0 0 0 10px rgba(168, 85, 247, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
+    }
+
+    /* 6. Continuous Shake Warning */
+    .btn-shake {
+      padding: 12px 24px;
+      background: #ec4899;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      animation: sideShake 1.5s infinite ease-in-out;
+    }
+    @keyframes sideShake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+      20%, 40%, 60%, 80% { transform: translateX(4px); }
+    }
+
+    /* ========================================================
+       TEXT ANIMATIONS (7 - 11)
+       ======================================================== */
+    
+    /* 7. Monospace Terminal Typing */
+    .text-typewriter {
+      font-family: monospace;
+      font-size: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #38bdf8;
+      width: 0;
+      animation: typeLoop 3s steps(14) infinite;
+    }
+    @keyframes typeLoop {
+      0%, 100% { width: 0; }
+      40%, 80% { width: 100%; }
+    }
+
+    /* 8. Slide & Opacity Reveal */
+    .text-slide-reveal {
+      font-size: 18px;
+      font-weight: bold;
+      animation: slideReveal 3s infinite ease-in-out;
+    }
+    @keyframes slideReveal {
+      0% { opacity: 0; transform: translateY(20px); }
+      20%, 80% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-20px); }
+    }
+
+    /* 9. Text Blur Focus Change */
+    .text-blur-in {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      animation: blurCycle 2.5s infinite alternate ease-in-out;
+    }
+    @keyframes blurCycle {
+      0% { filter: blur(6px); opacity: 0.3; }
+      100% { filter: blur(0px); opacity: 1; }
+    }
+
+    /* 10. Horizontal Marquee Sweep */
+    .marquee-box {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      background: #0f172a;
+      padding: 8px;
+      border-radius: 4px;
+    }
+    .text-marquee {
+      display: inline-block;
+      animation: scrollRightLeft 8s linear infinite;
+    }
+    @keyframes scrollRightLeft {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* 11. Color Gradient Fill Transition */
+    .text-gradient-shift {
+      font-size: 22px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #38bdf8, #ec4899, #38bdf8);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 3s linear infinite;
+    }
+    @keyframes gradientMove {
+      to { background-position: 200% center; }
+    }
+
+    /* ========================================================
+       SPINNERS & LOADERS (12 - 16)
+       ======================================================== */
+    
+    /* 12. Standard Top-Border Ring Spin */
+    .spinner-ring {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255,255,255,0.1);
+      border-top-color: #38bdf8;
+      border-radius: 50%;
+      animation: turnAround 0.8s linear infinite;
+    }
+    @keyframes turnAround {
+      to { transform: rotate(360deg); }
+    }
+
+    /* 13. Dual-Axis Reverse Spin */
+    .spinner-dual {
+      width: 40px;
+      height: 40px;
+      border: 3px solid transparent;
+      border-top-color: #f43f5e;
+      border-bottom-color: #f43f5e;
+      border-radius: 50%;
+      animation: turnAround 1.2s linear infinite;
+      position: relative;
+    }
+    .spinner-dual::after {
+      content: '';
+      position: absolute;
+      top: 5px; left: 5px; right: 5px; bottom: 5px;
+      border: 3px solid transparent;
+      border-left-color: #eab308;
+      border-right-color: #eab308;
+      border-radius: 50%;
+      animation: turnAround 0.6s linear infinite reverse;
+    }
+
+    /* 14. Linear Square Rotate Flip */
+    .spinner-flip-square {
+      width: 35px;
+      height: 35px;
+      background-color: #3b82f6;
+      animation: flip3D 1.2s infinite ease-in-out;
+    }
+    @keyframes flip3D {
+      0% { transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
+      50% { transform: perspective(120px) rotateX(-180deg) rotateY(0deg); background-color: #ec4899; }
+      100% { transform: perspective(120px) rotateX(-180deg) rotateY(-180deg); }
+    }
+
+    /* 15. Dots Sequential Jump Wave */
+    .dot-wave {
+      display: flex;
+      gap: 6px;
+    }
+    .dot-wave div {
+      width: 12px;
+      height: 12px;
+      background: #a855f7;
+      border-radius: 50%;
+      animation: waveJump 1.2s infinite ease-in-out;
+    }
+    .dot-wave div:nth-child(2) { animation-delay: 0.2s; }
+    .dot-wave div:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes waveJump {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    /* 16. Pulsing Radar Scale Rings */
+    .spinner-radar {
+      width: 40px;
+      height: 40px;
+      background-color: #06b6d4;
+      border-radius: 50%;
+      animation: radarPulse 1.2s infinite ease-in-out;
+    }
+    @keyframes radarPulse {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(1.3); opacity: 0; }
+    }
+
+    /* ========================================================
+       OPACITY, UTILITY, & ADVANCED (17 - 20)
+       ======================================================== */
+    
+    /* 17. Status Beacon Ping Indicator */
+    .beacon-core {
+      width: 12px;
+      height: 12px;
+      background: #10b981;
+      border-radius: 50%;
+      position: relative;
+    }
+    .beacon-core::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: #10b981;
+      border-radius: 50%;
+      animation: pingOut 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes pingOut {
+      75%, 100% { transform: scale(3.5); opacity: 0; }
+    }
+
+    /* 18. Skeleton Block Gradient Shimmer */
+    .skeleton-container {
+      width: 80%;
+    }
+    .skeleton-bar {
+      height: 14px;
+      background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%);
+      background-size: 200% 100%;
+      border-radius: 4px;
+      animation: shimmerRun 1.5s infinite linear;
+    }
+    @keyframes shimmerRun {
+      to { background-position-x: -200%; }
+    }
+
+    /* 19. Pop-In Scale Elastic Alert */
+    .pop-in-box {
+      width: 50px;
+      height: 50px;
+      background: #f43f5e;
+      border-radius: 8px;
+      animation: elasticPop 2s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes elasticPop {
+      0%, 100% { transform: scale(0); opacity: 0; }
+      20%, 80% { transform: scale(1); opacity: 1; }
+    }
+
+    /* 20. Bar Progress Loop Frame */
+    .progress-track {
+      width: 80%;
+      height: 8px;
+      background: #334155;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-bar {
+      position: absolute;
+      background: #38bdf8;
+      width: 40%;
+      height: 100%;
+      border-radius: 10px;
+      animation: fluidFill 2s infinite ease-in-out;
+    }
+    @keyframes fluidFill {
+      0% { left: -40%; width: 30%; }
+      50% { width: 60%; }
+      100% { left: 110%; width: 30%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="animation-grid">
+
+    <div class="animation-group">
+      <div class="group-title">1. Scale Pulse Button</div>
+      <div class="box"><button class="btn-scale-pulse">Save Changes</button></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">2. Slide Shimmer Fill</div>
+      <div class="box"><button class="btn-shimmer-sweep">Upgrade Now</button></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">3. Infinite Floating Lift</div>
+      <div class="box"><div class="element-float">Floating Node</div></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">4. Elastic Bounce Press</div>
+      <div class="box"><button class="btn-bounce">Tap Here</button></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">5. Outline Growth Fill</div>
+      <div class="box"><button class="btn-outline-grow">Target Sync</button></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">6. Continuous Shake Warning</div>
+      <div class="box"><button class="btn-shake">Delete Item</button></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">7. Monospace Terminal Typing</div>
+      <div class="box"><div class="text-typewriter">Fetching data...</div></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">8. Slide & Opacity Reveal</div>
+      <div class="box"><div class="text-slide-reveal">Welcome Back</div></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">9. Text Blur Focus Change</div>
+      <div class="box"><div class="text-blur-in">STREAMING LIVE</div></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">10. Horizontal Marquee Sweep</div>
+      <div class="box">
+        <div class="marquee-box"><div class="text-marquee">System Notice: Maintenance scheduled for 02:00 UTC</div></div>
+      </div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">11. Color Gradient Fill Transition</div>
+      <div class="box"><div class="text-gradient-shift">PREMIUM ENGINE</div></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">12. Top-Border Ring Spin</div>
+      <div class="box"><div class="spinner-ring"></div></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">13. Dual-Axis Reverse Spin</div>
+      <div class="box"><div class="spinner-dual"></div></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">14. Linear Square Rotate Flip</div>
+      <div class="box"><div class="spinner-flip-square"></div></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">15. Dots Sequential Jump Wave</div>
+      <div class="box">
+        <div class="dot-wave"><div></div><div></div><div></div></div>
+      </div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">16. Pulsing Radar Scale Rings</div>
+      <div class="box"><div class="spinner-radar"></div></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">17. Status Beacon Ping Indicator</div>
+      <div class="box"><div class="beacon-core"></div></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">18. Skeleton Block Gradient Shimmer</div>
+      <div class="box">
+        <div class="skeleton-container"><div class="skeleton-bar"></div></div>
+      </div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">19. Pop-In Scale Elastic Alert</div>
+      <div class="box"><div class="pop-in-box"></div></div>
+    </div>
+
+    <div class="animation-group">
+      <div class="group-title">20. Bar Progress Loop Frame</div>
+      <div class="box">
+        <div class="progress-track"><div class="progress-bar"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
