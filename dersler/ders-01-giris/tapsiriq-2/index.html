@@ -1,96 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="az">
 
 <head>
-    <title>CSS Dərs 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezzet Kafe - Menyu</title>
     <link rel="stylesheet" href="style.css">
+
     <style>
         body {
-            background-color: #f4f4f4;
-            padding: 20px;
+            font-size: 16px;
+            background-color: #fdf6ec;
         }
 
         h1 {
-            color: darkblue;
-            font-size: 42px;
+            color: #5c3d2e;
+            font-size: 36px;
         }
 
         h2 {
-            color: purple;
-            font-size: 30px;
-        }
-
-        h3 {
-            color: darkred;
+            color: #5c3d2e;
             font-size: 24px;
         }
 
+        h3 {
+            color: #3a3a3a;
+            font-size: 20px;
+        }
+
         p {
-            color: #333;
+            color: #555555;
+        }
+
+        nav {
+            background-color: #c3c0bf;
+            padding: 10px;
+        }
+
+        footer {
+            background-color: #5c3d2e;
+            color: #ffffff;
+            padding: 15px;
+        }
+
+        .menu-item {
+            background-color: #ffffff;
+            border: 1px solid #d8c3a5;
+            padding: 15px;
+        }
+
+        .price {
+            color: #c0392b;
             font-size: 18px;
         }
 
-        div {
-            background-color: lightyellow;
-            width: 500px;
-            height: 180px;
+        #special {
+            background-color: #fff3cd;
+            border: 2px solid #e0a800;
             padding: 20px;
-            border: 3px solid orange;
         }
-
-        ul {
-            background-color: white;
-            width: 300px;
-            padding: 20px;
-            border: 2px solid gray;
-        }
-
-        li {
-            font-size: 18px;
-            color: green;
-        }
-
-        button {
-            background-color: green;
-            color: white;
-            font-size: 18px;
-            width: 150px;
-            height: 50px;
-            border: 2px solid black;
-        }
-
-      
     </style>
 </head>
 
 <body>
 
-    <h1>Dünya xəbərləri</h1>
+    <header>
+        <h1>Kafe vebsaytı</h1>
+        <p>Ən yaxşı kofelər bu kafedə</p>
+    </header>
 
-    <h2>Biz CSS öyrənirik</h2>
+    <nav>
+        <a href="#">Ana Səhifə</a>
+        <a href="#">Menyu</a>
+        <a href="#">Əlaqə</a>
+    </nav>
 
-    <p>
-        CSS çox maraqlı, əyləncəli, rahat dildir. Kodları sadəcə əzbərlmək lazımdır
-    </p>
+    <main>
+        <h2>Menyumuz</h2>
 
-    <p>
-        İstəsən hər şey mümkündür
-    </p>
+        <div class="menu-item">
+            <h3>Cappuccino</h3>
+            <p>Klassik İtalyan kofesi, südlü köpüklə</p>
+            <span class="price">4.50 AZN</span>
+        </div>
 
-    <div>
-        <h3>Haqqımızda</h3>
-        <p>
-           Burda bir div yaranıb içində padding, border, background-color var
-        </p>
-    </div>
+        <div class="menu-item">
+            <h3>Latte</h3>
+            <p>Yumşaq və südlü, sevimli seçim</p>
+            <span class="price">5.00 AZN</span>
+        </div>
 
-    <ul>
-        <li>HTML öyrənirik</li>
-        <li>CSS öyrənirik</li>
-        <li>Veb sayt hazırlayırıq</li>
-    </ul>
+        <div class="menu-item" id="special">
+            <h3>Günün Spesialı: Karamel Frappe</h3>
+            <p>Buzlu, şirin və enerji verici içki</p>
+            <span class="price">6.00 AZN</span>
+        </div>
 
-    <button>Ətraflı Oxu</button>
+        <div class="menu-item">
+            <h3>Yaşıl Çay</h3>
+            <p>Sağlam və rahatladıcı</p>
+            <span class="price">3.50 AZN</span>
+        </div>
+    </main>
 
 
 </body>
