@@ -1,0 +1,136 @@
+/* ==========================================================================
+   Dərs 1: Sintaksis və Əsas Seçicilər (Universal, Element, Class, ID)
+   ========================================================================== */
+
+/* Universal seçici ilə ilkin sıfırlama */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Element seçici - Şrift ailəsinin tətbiqi */
+body {
+    font-family: 'Playfair Display', serif; /* Dərs 2: Xarici şrift */
+    color: #ffffff;
+}
+
+/* ID Seçici - Əsas profil kartının Box Model strukturu */
+#profile-card {
+    width: 380px;                  /* Qutunun eni */
+    background-color: rgb(30, 30, 35); /* Dərs 2: RGB rəng kodu */
+    
+    /* Dərs 3: Box Model - Boşluqlar */
+    padding: 30px;                 /* İç boşluq */
+    margin: 50px auto;             /* Çöl boşluq: Yuxarı/Aşağı 50px, Sağ/Sol mərkəzləmə */
+    
+    /* Dərs 3: Box Model - Çərçivələr */
+    border: 2px solid #2e2e38;     /* Bütöv incə çərçivə */
+    border-radius: 16px;           /* Künclərin yumrulanması */
+}
+
+/* ==========================================================================
+   Dərs 2: Rənglər və Yazı Attributları (Typography)
+   ========================================================================== */
+
+.profile-header {
+    text-align: center;            /* Mətni mərkəzə hizalamaq */
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 28px;               /* Şrift ölçüsü */
+    font-weight: bold;             /* Şrift qalınlığı */
+    letter-spacing: 1px;           /* Hərflərarası məsafə */
+    text-transform: uppercase;     /* Bütün hərfləri böyük etmək */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Yazıya kölgə vermək */
+    color: #ffffff;
+}
+
+.subtitle {
+    font-size: 16px;
+    font-style: italic;            /* Kursiv yazı növü */
+    color: #ff5722;                /* Narıncı rəng */
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #2e2e38;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: normal;
+    color: #b3b3b3;
+    text-transform: capitalize;    /* Hər sözün ilk hərfini böyük etmək */
+    margin-bottom: 10px;
+    word-spacing: 2px;             /* Sözlərarası məsafə */
+}
+
+.bio-text {
+    font-size: 14px;
+    line-height: 1.6;              /* Sətirlərarası məsafə */
+    text-align: justify;           /* Mətni hər iki tərəfə bərabər yaymaq */
+    text-indent: 15px;             /* Abzasın içəridən başlaması */
+    color: #e0e0e0;
+    margin-bottom: 25px;
+}
+
+/* ==========================================================================
+   Dərs 2 & 3: Linklərin Dekorasiyası və Spesifik Box Model Tətbiqi
+   ========================================================================== */
+
+.profile-links {
+    margin-bottom: 25px;
+}
+
+/* Link elementlərinin qutu kimi tənzimlənməsi */
+.music-link {
+    display: block;                /* Linkləri blok elementə çevirmək ki, margin/padding tam təsir etsin */
+    font-size: 14px;
+    text-decoration: none;         /* Linklərin altındakı standart xətti silmək */
+    text-align: center;
+    
+    /* Box Model xüsusiyyətləri */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 8px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* Hər bir fərqli düymə üçün fərqli rənglər */
+#spotify-btn {
+    background-color: #1ed760;     /* Spotify yaşılı */
+    color: #000000;
+}
+
+#soundcloud-btn {
+    background-color: #ff5500;     /* SoundCloud narıncısı */
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   Dərs 2: Overflow və Text-Overflow (Mətni Kəsmə Ssenarisi)
+   ========================================================================== */
+
+.track-section {
+    background-color: #1a1a1e;
+    padding: 12px;
+    border-left: 4px solid #ff5722; /* Yalnız sol tərəfə qalın çərçivə xətti */
+    border-radius: 4px;
+}
+
+.track-name {
+    font-size: 13px;
+    color: #a0a0a5;
+    margin-top: 5px;
+    
+    /* Yazının sətirdən çıxıb nöqtələnməsi üçün lazım olan 3-lü kombinasiya */
+    white-space: nowrap;           /* Yazını tək sətirdə saxlayır, alt sətrə keçməyə qoymur */
+    overflow: hidden;              /* Qutudan daşan hissəni gizlədir */
+    text-overflow: ellipsis;       /* Kəsilən hissənin sonuna 3 nöqtə (...) qoyur */
+}
