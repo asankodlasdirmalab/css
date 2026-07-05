@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medix Healthcare Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">Medix<span>+</span></div>
+        <nav class="nav-links">
+            <a href="#hero">Ana Səhifə</a>
+            <a href="#pricing">Qiymətlər</a>
+            <a href="#dashboard">Dashboard</a>
+        </nav>
+        <div class="theme-switch-wrapper">
+            <span class="mode-text">Həkim Hesabım</span>
+         🥼
+        </div>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1>Rəqəmsal Sağlamlıq İnfrastrukturu</h1>
+            <p>Müasir tibbi alətlər, sürətli analiz analitikası və xəstə xidmətlərinin vahid platformada effektiv idarə olunması.</p>
+            <a href="#dashboard" class="cta-btn">Sistemə Daxil Ol</a>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <h2 class="section-title">Xidmət Paketləri</h2>
+        <div class="pricing-container">
+            <div class="card">
+                <h3>Start Paket</h3>
+                <div class="price">29<span>₼/ay</span></div>
+                <ul class="features">
+                    <li>5 Həkim Hesabı</li>
+                    <li>100 Xəstə Qeydiyyatı</li>
+                    <li>Baza Analitika</li>
+                </ul>
+                <button class="card-btn">İndi Başla</button>
+            </div>
+            <div class="card premium">
+                <h3>Professional</h3>
+                <div class="price">79<span>₼/ay</span></div>
+                <ul class="features">
+                    <li>25 Həkim Hesabı</li>
+                    <li>1000 Xəstə Qeydiyyatı</li>
+                    <li>Qabaqcıl Analitika</li>
+                    <li>Sms Bildirişlər</li>
+                </ul>
+                <button class="card-btn">İndi Başla</button>
+            </div>
+            <div class="card disabled-card">
+                <h3>Enterprise</h3>
+                <div class="price">149<span>₼/ay</span></div>
+                <ul class="features">
+                    <li>Sonsuz Hesab</li>
+                    <li>Sonsuz Qeydiyyat</li>
+                    <li>Süni İntellekt Dəstəyi</li>
+                </ul>
+                <button class="card-btn" disabled>Tezliklə</button>
+            </div>
+        </div>
+    </section>
+
+    <main id="dashboard" class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="profile-card">
+                <div class="avatar"></div>
+                <h4>Dr. Elnur Əliyev</h4>
+                <p>Baş Kardioloq</p>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active">Xülasə</li>
+                <li>Xəstələr</li>
+                <li>Təqvim</li>
+                <li>Ayarlar</li>
+            </ul>
+        </aside>
+
+        <section class="dashboard-content">
+            <header class="content-header">
+                <h2>Tibbi İdarəetmə Paneli</h2>
+                <div class="spinner"></div>
+            </header>
+
+            <div class="main-grid">
+                <div class="grid-box widget-stats">
+                    <div class="stat-item">
+                        <span>Ümumi Xəstə</span>
+                        <strong>1,248</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>Bugünkü Qəbul</span>
+                        <strong>14</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>Təcili Yardımlar</span>
+                        <strong>3</strong>
+                    </div>
+                </div>
+
+                <div class="grid-box widget-table">
+                    <h3>Son Aktivlik siyahısı</h3>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Xəstə Adı</th>
+                                    <th>Diaqnoz</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-truncate">Məmmədov Cavid Şahin oğlu</td>
+                                    <td>Hipertoniya</td>
+                                    <td><span class="badge status-green">Tamamlandı</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-truncate">Qasımova Leyla Murad qızı</td>
+                                    <td>Aritmiya</td>
+                                    <td><span class="badge status-amber">Gözləyir</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid-box widget-calendar">
+                    <h3>Növbəti Təqvim</h3>
+                    <div class="calendar-event">
+                        <span>14:30</span>
+                        <p>Konsilium - Palata 4</p>
+                    </div>
+                    <div class="calendar-event">
+                        <span>16:00</span>
+                        <p>Kardio Cərrahiyyə iclası</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+  
+
+</body>
+</html>
