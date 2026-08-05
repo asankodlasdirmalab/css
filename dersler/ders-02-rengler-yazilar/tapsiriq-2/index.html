@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Lesson 2</title>
+    <style>
+        body {
+            /* hex və rgb() istifadəsi, şrifti dəyişdirmək, padding, border */
+            background-color: #f4f4f9;
+            color: rgb(34, 34, 34);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+            border: 2px solid #ccc;
+        }
+
+        h1 {
+            /* font-size, font-weight, text-align, text-transform, text-shadow, color */
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #1a0dab;
+            background-color: rgb(230, 235, 245);
+            padding: 15px;
+            border: 1px solid #1a0dab;
+        }
+
+        .subtitle {
+            /* font-style, text-decoration, letter-spacing, word-spacing, text-indent */
+            font-style: italic;
+            text-decoration: underline;
+            letter-spacing: 2px;
+            word-spacing: 5px;
+            text-indent: 40px;
+            color: rgb(100, 100, 100);
+            font-size: 18px;
+        }
+
+        .content-box {
+            /* line-height, padding, border, background-color */
+            line-height: 1.8;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid rgb(200, 200, 200);
+            font-size: 16px;
+        }
+
+        .truncated-text {
+            /* overflow, text-overflow, white-space */
+            width: 300px;
+            height: 100px;;
+            overflow: auto;
+            
+            /* əlavə xassələr */
+            background-color: rgb(255, 243, 205);
+            color: #856404;
+            padding: 10px;
+            border: 1px solid #ffeeba;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CSS İkinci Dərs: Yazilar ve rengler</h1>
+
+    <p class="subtitle">
+        Bu hissədə şriftlərin stilini, məsafələrini və mətnin formasını dəyişdiririk.
+    </p>
+
+    <div class="content-box">
+        Mətni oxuyarkən sətirlər arasındakı məsafə line-height xassəsi ilə tənzimlənir.
+        Bu xassə mətnin oxunmasını asanlaşdırır və vizual olaraq daha geniş sahə yaradır.
+    </div>
+
+    <br>
+
+    <h3>Kənara Çıxan Mətnin İdarə Edilməsi:</h3>
+    <p class="truncated-text">
+        Bu çox uzun bir mətndir və müəyyən edilmiş bloka sığışmadığı üçün sonuna üç nöqtə əlavə olunacaqdır.Bu çox uzun bir mətndir və müəyyən edilmiş bloka sığışmadığı üçün sonuna üç nöqtə əlavə olunacaqdır.Bu çox uzun bir mətndir və müəyyən edilmiş bloka sığışmadığı üçün sonuna üç nöqtə əlavə olunacaqdır.Bu çox uzun bir mətndir və müəyyən edilmiş bloka sığışmadığı üçün sonuna üç nöqtə əlavə olunacaqdır.Bu çox uzun bir mətndir və müəyyən edilmiş bloka sığışmadığı üçün sonuna üç nöqtə əlavə olunacaqdır.Bu çox uzun bir mətndir və müəyyən edilmiş bloka sığışmadığı üçün sonuna üç nöqtə əlavə olunacaqdır.
+    </p>
+
+</body>
+</html>
