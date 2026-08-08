@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Dərs Praktikası - Flexbox və Mətn Stilləri</title>
+    <style>
+        /* Global sıfırlama və şrift təyini */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* Şrift, rənglər, padding */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: rgb(40, 40, 40);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        /* Header Bölməsi */
+        .header {
+            /* Text-align, text-transform, text-shadow, margin */
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1e293b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 18px;
+            color: rgb(100, 116, 139);
+            font-style: italic;
+            word-spacing: 3px;
+            margin-top: 8px;
+        }
+
+        /* 1-ci Bölmə: Xidmət Kartları (Flexbox & Flex-wrap) */
+        .card-container {
+            /* Flexbox, justify-content, gap, flex-wrap */
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            /* Background, border, border-radius, padding */
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            width: 300px;
+            
+            /* Text styling */
+            text-align: center;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            color: #0f172a;
+            margin-bottom: 12px;
+            text-transform: capitalize;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #64748b;
+            letter-spacing: 0.5px;
+            /* line-height istifadəsi */
+            line-height: 1.5;
+        }
+
+        /* 2-ci Bölmə: Statistika Zolağı (Flexbox align-items, justify-content) */
+        .stats-banner {
+            /* Flexbox idarəetməsi */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: row;
+
+            /* Stillər: hex, rgb(), padding, border-radius, text-shadow */
+            background-color: rgb(30, 41, 59);
+            color: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            border: 2px solid #334155;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #38bdf8;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+            color: #94a3b8;
+        }
+
+        /* 3-cü Bölmə: Kənara Çıxan Mətn (Overflow & Text-overflow) */
+        .notice-box {
+            margin-top: 50px;
+            background-color: #fffbeb;
+            border: 1px solid #fef3c7;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .notice-title {
+            font-weight: bold;
+            color: #b45309;
+            margin-bottom: 8px;
+        }
+
+        .truncated-notice {
+            /* white-space, overflow, text-overflow */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #92400e;
+            font-size: 14px;
+            padding: 8px;
+            background-color: #fef3c7;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Rəqəmsal Həllər</h1>
+        <p>Bizim xidmətlərimiz və komandamız haqqında qısa məlumat</p>
+    </div>
+
+    <!-- Xidmət Kartları (Flexbox Layout) -->
+    <div class="card-container">
+        <div class="card">
+            <h3>Veb Dizayn</h3>
+            <p>Müasir və istifadəçi dostu interfeyslərin hazırlanması. Hər bir cihaz üçün tam responsive dizayn.</p>
+        </div>
+
+        <div class="card">
+            <h3>Proqramlaşdırma</h3>
+            <p>Sürətli və təhlükəsiz veb tətbiqlərin yaradılması. Ən son texnologiyaların tətbiqi.</p>
+        </div>
+
+        <div class="card">
+            <h3>SEO və SMM</h3>
+            <p>Axtarış sistemlərində ön sıralara çıxmaq və sosial mediada brendinizi böyütmək üçün strategiyalar.</p>
+        </div>
+    </div>
+
+    <!-- Statistika Zolağı (Flex Alignment) -->
+    <div class="stats-banner">
+        <div class="stat-item">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Layihə</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">99%</div>
+            <div class="stat-label">Məmnuniyyət</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Dəstək</div>
+        </div>
+    </div>
+
+</body>
+</html>
