@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store - Pure Flexbox Practice</title>
+    <style>
+        /* ---------------------------------------------------
+           1. RESET & GLOBAL STYLES
+        --------------------------------------------------- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* ---------------------------------------------------
+           2. HEADER & NAVIGATION (Flexbox: Space-Between & Align-Items)
+        --------------------------------------------------- */
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 40px;
+
+            /* FLEXBOX PROPERTIES */
+            display: flex;
+            justify-content: space-between; /* Loqotip, menyu və düyməni kənarlara paylayır */
+            align-items: center;            /* Elementləri şaquli mərkəzləşdirir */
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+
+            /* FLEXBOX PROPERTIES */
+            display: flex;
+            gap: 28px; /* Keçid linkləri arasında 28px məsafə */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-actions {
+            /* FLEXBOX PROPERTIES */
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* ---------------------------------------------------
+           3. FEATURES BANNER (Flexbox: Space-Around)
+        --------------------------------------------------- */
+        .features-banner {
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 30px 40px;
+            margin: 40px auto;
+            max-width: 1200px;
+            border-radius: 12px;
+
+            /* FLEXBOX PROPERTIES */
+            display: flex;
+            justify-content: space-around; /* Elementləri bərabər məsafə ilə paylayır */
+            align-items: center;
+            gap: 20px;
+        }
+
+        .feature-item {
+            /* FLEXBOX PROPERTIES */
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            background-color: #1e293b;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 20px;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .feature-desc {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* ---------------------------------------------------
+           4. PRODUCT LIST (ONLY FLEXBOX & FLEX-WRAP)
+        --------------------------------------------------- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f172a;
+        }
+
+        .product-list {
+            /* FLEXBOX PROPERTIES */
+            display: flex;
+            justify-content: center;
+
+            gap: 24px;       /* Kartlar arası məsafə */
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px;
+            
+            /* Sırf Flexbox ilə hər sətirdə 4 kart yerləşdirmək üçün hesablanmış genişlik */
+            width: calc(25% - 18px); 
+
+            /* FLEXBOX PROPERTIES (Kartın öz daxili düzülüşü) */
+            display: flex;
+            flex-direction: column; /* Şaquli ardıcıllıq */
+            justify-content: space-between;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 180px;
+            background-color: #e2e8f0;
+            border-radius: 6px;
+            margin-bottom: 12px;
+
+            /* FLEXBOX PROPERTIES (Mətni kartın mərkəzinə gətirmək üçün) */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .product-description {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+
+        .product-footer {
+            /* FLEXBOX PROPERTIES */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto; /* Qiymət və düyməni kartın ən aşağısına sıxır */
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .btn-secondary {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            border: 1px solid #cbd5e1;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR SECTION -->
+    <header class="navbar">
+        <div class="logo">DevStore</div>
+        <ul class="nav-links">
+            <li><a href="#">Ana Səhifə</a></li>
+            <li><a href="#">Məhsullar</a></li>
+            <li><a href="#">Kolleksiyalar</a></li>
+            <li><a href="#">Əlaqə</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="btn-primary">Login</button>
+        </div>
+    </header>
+
+    <!-- FEATURES BANNER -->
+    <section class="features-banner">
+        <div class="feature-item">
+            <div>
+                <div class="feature-title">Sürətli Çatdırılma</div>
+                <div class="feature-desc">24 saat ərzində ünvanınıza</div>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div>
+                <div class="feature-title">Təhlükəsiz Ödəniş</div>
+                <div class="feature-desc">100% zəmanətli əməliyyat</div>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div>
+                <div class="feature-title">24/7 Dəstək</div>
+                <div class="feature-desc">Canlı mütəxəssis dəstəyi</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN PRODUCTS SECTION (PURE FLEXBOX) -->
+    <main class="container">
+        <h2 class="section-title">Məşhur Məhsullar</h2>
+        
+        <div class="product-list">
+            
+            <!-- PRODUCT CARD 1 -->
+            <div class="product-card">
+                <div class="product-title">Wireless Headphone</div>
+                <div class="product-description">Yüksək səs keyfiyyəti və kənar küyü boğma funksiyası.</div>
+                <div class="product-footer">
+                    <span class="product-price">$120</span>
+                    <button class="btn-secondary">Səbətə At</button>
+                </div>
+            </div>
+
+            <!-- PRODUCT CARD 2 -->
+            <div class="product-card">
+                <div class="product-title">Smart Watch Pro</div>
+                <div class="product-description">Ürək döyüntüsü və addım sayı göstəriciləri ilə.</div>
+                <div class="product-footer">
+                    <span class="product-price">$250</span>
+                    <button class="btn-secondary">Səbətə At</button>
+                </div>
+            </div>
+
+            <!-- PRODUCT CARD 3 -->
+            <div class="product-card">
+                <div class="product-title">Mechanical Keyboard</div>
+                <div class="product-description">RGB işıqlandırmalı mexaniki proqramçı klaviaturası.</div>
+                <div class="product-footer">
+                    <span class="product-price">$85</span>
+                    <button class="btn-secondary">Səbətə At</button>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+</body>
+</html>
