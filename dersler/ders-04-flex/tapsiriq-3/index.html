@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turbo.az - Tapsiriq</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f1f3f7;
+            color: #111;
+        }
+
+        /* ------------------------------------------
+           1. TOP HEADER (Bina.az, Tap.az və s.)
+        ------------------------------------------ */
+        .top-bar {
+            background-color: #f6f7f9;
+            padding: 8px 40px;
+            font-size: 13px;
+            color: #8d94ad;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e4ed;
+        }
+
+        .top-left, .top-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .top-bar a {
+            text-decoration: none;
+            color: #8d94ad;
+            font-weight: bold;
+        }
+
+        /* ------------------------------------------
+           2. MAIN HEADER (Qırmızı Menyu)
+        ------------------------------------------ */
+        .main-header {
+            background-color: #ca1016;
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+
+        .nav-items a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn-add {
+            background-color: #7ed321;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* ------------------------------------------
+           3. FILTER SECTION (Axtarış Paneli)
+        ------------------------------------------ */
+        .filter-section {
+            background-color: #ebedf3;
+            padding: 20px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-input, .filter-select {
+            padding: 10px;
+            border: 1px solid #dcdfe6;
+            border-radius: 8px;
+            background-color: white;
+            flex: 1;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .btn-group {
+            display: flex;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #dcdfe6;
+        }
+
+        .btn-toggle {
+            padding: 10px 15px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-toggle.active {
+            background-color: #ca1016;
+            color: white;
+        }
+
+        .btn-search {
+            background-color: #ca1016;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        /* ------------------------------------------
+           4. PREMİUM ELANLAR SECTION
+        ------------------------------------------ */
+        .container {
+            padding: 30px 40px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #111;
+        }
+
+        .cards-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            width: calc(25% - 15px); /* 4 kart yan-yana */
+            min-width: 220px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            flex-grow: 1;
+        }
+
+        /* CSS Background Image İdarəetməsi (Dərs 5) */
+        .card-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        /* Şəkillər (Unsplash Nümunələri) */
+        .img-1 { background-image: url('https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=600'); }
+        .img-2 { background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=600'); }
+        .img-3 { background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600'); }
+        .img-4 { background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600'); }
+
+        .card-body {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .card-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #111;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .card-info {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .card-city {
+            font-size: 12px;
+            color: #8d94ad;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-left">
+            <a href="#">Tap.az</a>
+            <a href="#">Bina.az</a>
+            <a href="#">Boss.az</a>
+        </div>
+        <div class="top-right">
+            <span>Dəstək: (012) 526-47-47</span>
+            <span>Yardım</span>
+            <span>RU</span>
+            <span>Mesajlar</span>
+            <span>Seçilmişlər</span>
+            <span>Giriş</span>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header">
+        <div class="logo">TURBO.AZ</div>
+        <ul class="nav-items">
+            <li><a href="#">Bütün elanlar</a></li>
+            <li><a href="#">Dilerlər</a></li>
+            <li><a href="#">Sifarişlə</a></li>
+            <li><a href="#">Avtokataloq</a></li>
+            <li><a href="#">Moto</a></li>
+            <li><a href="#">Ehtiyat hissələr və aksesuarlar</a></li>
+            <li><a href="#">İcarə</a></li>
+        </ul>
+        <a href="#" class="btn-add">+ Yeni elan</a>
+    </header>
+
+    <!-- FILTER SECTION -->
+    <section class="filter-section">
+        <div class="filter-row">
+            <select class="filter-select"><option>Marka</option></select>
+            <select class="filter-select"><option>Model</option></select>
+            
+            <div class="btn-group">
+                <button class="btn-toggle active">Hamısı</button>
+                <button class="btn-toggle">Yeni</button>
+                <button class="btn-toggle">Sürülmüş</button>
+            </div>
+
+            <select class="filter-select"><option>Şəhər</option></select>
+        </div>
+
+        <div class="filter-row">
+            <input type="text" class="filter-input" placeholder="Qiymət, min.">
+            <input type="text" class="filter-input" placeholder="maks.">
+            
+            <select class="filter-select" style="max-width: 100px;"><option>AZN</option></select>
+
+            <button class="filter-input" style="background: white;">Kredit</button>
+            <button class="filter-input" style="background: white;">Barter</button>
+
+            <select class="filter-select"><option>Ban növü</option></select>
+            
+            <input type="text" class="filter-input" placeholder="İl, min.">
+            <input type="text" class="filter-input" placeholder="maks.">
+        </div>
+
+        <div class="filter-row">
+            <div style="flex: 2; font-size: 13px; color: #555;">
+                Bu gün: <a href="#" style="color: #2563eb;">1637 yeni elan</a>
+            </div>
+
+            <button class="btn-search">Elanları göster</button>
+        </div>
+    </section>
+
+    <!-- PREMIUM ELANLAR -->
+    <main class="container">
+        <h2 class="section-title">PREMİUM ELANLAR</h2>
+
+        <div class="cards-grid">
+            <!-- CARD 1 -->
+            <div class="card">
+                <div class="card-image img-1"></div>
+                <div class="card-body">
+                    <div class="card-price">20 000 ₼</div>
+                    <div class="card-title">Mercedes ML 350 4MATIC</div>
+                    <div class="card-info">2008, 3.5 L, 277 000 km</div>
+                    <div class="card-city">Bakı, bugün 10:52</div>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="card">
+                <div class="card-image img-2"></div>
+                <div class="card-body">
+                    <div class="card-price">13 000 ₼</div>
+                    <div class="card-title">GAZ 69</div>
+                    <div class="card-info">1972, 2.1 L, 55 000 km</div>
+                    <div class="card-city">Bakı, bugün 10:51</div>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="card">
+                <div class="card-image img-3"></div>
+                <div class="card-body">
+                    <div class="card-price">29 300 ₼</div>
+                    <div class="card-title">BMW 320d</div>
+                    <div class="card-info">2015, 2.0 L, 225 000 km</div>
+                    <div class="card-city">Bakı, bugün 10:50</div>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="card">
+                <div class="card-image img-4"></div>
+                <div class="card-body">
+                    <div class="card-price">47 600 ₼</div>
+                    <div class="card-title">BMW X5</div>
+                    <div class="card-info">2017, 2.0 L, 151 614 km</div>
+                    <div class="card-city">Sumqayıt, bugün 10:50</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
