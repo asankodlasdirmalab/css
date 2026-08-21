@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeEdu - Onlayn Proqramlaşdırma Kursları</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+
+        /* ------------------------------------------
+           1. TOP HEADER (Əlaqə Zolağı)
+        ------------------------------------------ */
+        .top-bar {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 8px 40px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-left, .top-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+
+        .top-bar a:hover {
+            color: #ffffff;
+        }
+
+        /* ------------------------------------------
+           2. MAIN HEADER (Logo və Menyu)
+        ------------------------------------------ */
+        .main-header {
+            background-color: #ffffff;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .logo {
+            color: #2563eb;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-items a {
+            text-decoration: none;
+            color: #334155;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .nav-items a:hover {
+            color: #2563eb;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-login {
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            padding: 9px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .btn-register {
+            background-color: #2563eb;
+            color: white;
+            padding: 9px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .btn-register:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* ------------------------------------------
+           3. BANNER / HERO SECTION
+        ------------------------------------------ */
+        .hero {
+            background-color: #1e293b;
+            color: white;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 16px;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        .hero-btn {
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        /* ------------------------------------------
+           4. KURS KARTLARI SECTION
+        ------------------------------------------ */
+        .container {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 24px;
+            color: #0f172a;
+        }
+
+        .cards-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            width: calc(25% - 15px); /* 4 kart yan-yana */
+            min-width: 230px;
+            border: 1px solid #e2e8f0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* CSS Background Image (Dərs 5) */
+        .card-image {
+            height: 170px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Təhsil / Texnologiya Şəkilləri (Unsplash) */
+        .img-1 { background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600'); }
+        .img-2 { background-image: url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=600'); }
+        .img-3 { background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600'); }
+        .img-4 { background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600'); }
+
+        .card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card-tag {
+            background-color: #eff6ff;
+            color: #2563eb;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1e293b;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .card-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .card-duration {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .btn-enroll {
+            background-color: #0f172a;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-enroll:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-left">
+            <span>🎓 Tələbələr üçün 20% endirim kampaniyası başladı!</span>
+        </div>
+        <div class="top-right">
+            <a href="#">Dəstək</a>
+            <a href="#">Tez-tez verilən suallar</a>
+            <a href="#">AZ</a>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-header">
+        <div class="logo">CodeEdu</div>
+
+        <ul class="nav-items">
+            <li><a href="#">Bütün Kurslar</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Data Science</a></li>
+            <li><a href="#">Müəllimlər</a></li>
+            <li><a href="#">Haqqımızda</a></li>
+        </ul>
+
+        <div class="header-actions">
+            <a href="#" class="btn-login">Daxil ol</a>
+            <a href="#" class="btn-register">Qeydiyyat</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Gələcəyin İT Peşəsinə Yiyələnin</h1>
+        <p>Təcrübəli təlimçilər tərəfindən hazırlanan praktiki proqramlaşdırma kursları ilə sıfırdan peşəkar səviyyəyə yüksəlin.</p>
+        <a href="#" class="hero-btn">Kurslara Başla</a>
+    </section>
+
+    <!-- MAIN COURSES SECTION -->
+    <main class="container">
+        <h2 class="section-title">POPULYAR TƏLİM PROQRAMLARI</h2>
+
+        <div class="cards-grid">
+            <!-- CARD 1 -->
+            <div class="card">
+                <div>
+                    <div class="card-image img-1"></div>
+                    <div class="card-body">
+                        <span class="card-tag">Web Development</span>
+                        <div class="card-title">HTML & CSS Sıfırdan</div>
+                        <div class="card-desc">Veb saytların strukturunu və dizaynını sıfırdan hazırlamağı öyrənin.</div>
+                        <div class="card-footer">
+                            <span class="card-price">120 ₼</span>
+                            <span class="card-duration">1.5 Ay</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 0 16px 16px 16px;">
+                    <button class="btn-enroll">Kursa Qoşul</button>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="card">
+                <div>
+                    <div class="card-image img-2"></div>
+                    <div class="card-body">
+                        <span class="card-tag">Frontend</span>
+                        <div class="card-title">React.js Praktiki Kurs</div>
+                        <div class="card-desc">Müasir tək səhifəli veb tətbiqlər (SPA) qurmağı praktiki layihələrlə mənimsəyin.</div>
+                        <div class="card-footer">
+                            <span class="card-price">250 ₼</span>
+                            <span class="card-duration">3 Ay</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 0 16px 16px 16px;">
+                    <button class="btn-enroll">Kursa Qoşul</button>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="card">
+                <div>
+                    <div class="card-image img-3"></div>
+                    <div class="card-body">
+                        <span class="card-tag">Programming</span>
+                        <div class="card-title">Python Əsasları</div>
+                        <div class="card-desc">Proqramlaşdırmanın məntiqini və Python dilinin imkanlarını öyrənin.</div>
+                        <div class="card-footer">
+                            <span class="card-price">180 ₼</span>
+                            <span class="card-duration">2 Ay</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 0 16px 16px 16px;">
+                    <button class="btn-enroll">Kursa Qoşul</button>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="card">
+                <div>
+                    <div class="card-image img-4"></div>
+                    <div class="card-body">
+                        <span class="card-tag">Data Science</span>
+                        <div class="card-title">Data Analitikası</div>
+                        <div class="card-desc">Məlumatların təhlili, visualizasiyası və statistik analiz üsullarını öyrənin.</div>
+                        <div class="card-footer">
+                            <span class="card-price">300 ₼</span>
+                            <span class="card-duration">4 Ay</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 0 16px 16px 16px;">
+                    <button class="btn-enroll">Kursa Qoşul</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
