@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox & Background Image Cards</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f172a;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    /* Flexbox Container */
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* Base Card Style */
+    .card {
+      flex: 1 1 300px;
+      max-width: 340px;
+      height: 420px;
+      border-radius: 16px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      
+      /* Flexbox inside card to center text vertically & horizontally */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      text-align: center;
+      color: #ffffff;
+      
+      /* Smooth Hover Animation */
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    /* Hover State */
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Card Content Typography */
+    .card h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #e2e8f0;
+      max-width: 85%;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Background Images with Dark Linear Gradient Overlays */
+    .card-mountain {
+      background-image: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.75) 100%),
+                        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80");
+    }
+
+    .card-ocean {
+      background-image: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.75) 100%),
+                        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80");
+    }
+
+    .card-forest {
+      background-image: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.75) 100%),
+                        url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80");
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    <div class="card card-mountain">
+      <h2>Dağ Mənzərəsi</h2>
+      <p>Təbiətin sakitliyini və zirvələrin əzəmətini kəşf edin.</p>
+    </div>
+
+    <div class="card card-ocean">
+      <h2>Okean </h2>
+      <p>Mavi suların və dalğaların sakitləşdirici ahəngi.</p>
+    </div>
+
+    <div class="card card-forest">
+      <h2>Meşə</h2>
+      <p>Yaşıllığın içində sakit bir gəzinti və təmiz hava.</p>
+    </div>
+  </div>
+
+</body>
+</html>
