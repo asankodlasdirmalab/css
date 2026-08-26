@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid Lesson: Admin Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: #f8fafc;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    /* 
+      =============================================
+      1. LAYOUT CONTEXT (display: grid, template, gap)
+      =============================================
+    */
+    .dashboard {
+      /* Əsas konteyneri Grid rejiminə keçiririk */
+      display: grid;
+
+      /* Sütunlar: Sol menyu üçün 240px, qalan sahə üçün 1fr (bərabər hissə) */
+      grid-template-columns: 240px 1fr;
+
+      /* Sətirlər: Başlıq (Header) üçün 70px, Əsas məzmun (Main) üçün avtonom hündürlük */
+      grid-template-rows: 70px auto;
+
+      /* Qrafik xanalar arasında 20px məsafə */
+      gap: 20px;
+
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Ümumi Kart Stili */
+    .card {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* 
+      =============================================
+      2. HEADER SECTION (grid-column)
+      =============================================
+    */
+    .header {
+      /* Header-i 1-ci sütun çizgisindən 3-cü sütun çizgisinə qədər genişləndiririk (Bütün eni tutur) */
+      grid-column: 1 / 3;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #1e293b;
+      border-bottom: 2px solid #38bdf8;
+    }
+
+    .header h1 {
+      font-size: 1.25rem;
+      color: #38bdf8;
+    }
+
+    /* 
+      =============================================
+      3. SIDEBAR SECTION (grid-row)
+      =============================================
+    */
+    .sidebar {
+      /* Sol menyunu 2-ci sətirdən saxlayıb məzmunun sonuna qədər uzadırıq */
+      grid-column: 1 / 2;
+
+      background-color: #1e293b;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      background-color: #0f172a;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .sidebar li:hover {
+      background-color: #334155;
+    }
+
+    /* 
+      =============================================
+      4. MAIN CONTENT GRID (Daxili Neft/Nested Grid)
+      =============================================
+    */
+    .main-content {
+      grid-column: 2 / 3;
+
+      /* Ana məzmunun daxilini də 3 sütunlu Grid edirik */
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto auto;
+      gap: 20px;
+    }
+
+    /* Xüsusi Bloklar və Span istifadəsi */
+    
+    /* Stat Kartları */
+    .stat-card h3 {
+      font-size: 0.875rem;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+
+    .stat-card .value {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #f8fafc;
+    }
+
+    /* Satış Qrafiki (Əsas Analitika) */
+    .chart-box {
+      /* 1-ci sütundan başlayıb 3-cü sütuna qədər genişlənir (2 sütun tutur) */
+      grid-column: 1 / 3;
+      
+      /* 2 sətir hündürlüyündə uzanır */
+      grid-row: span 2;
+
+      min-height: 280px;
+      background-color: #1e293b;
+    }
+
+    .chart-placeholder {
+      height: 100%;
+      border: 2px dashed #334155;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #64748b;
+      margin-top: 12px;
+    }
+
+    /* Son Əməliyyatlar Cədvəli */
+    .recent-orders {
+      /* Bütün 3 sütun boyunca uzanır */
+      grid-column: 1 / 4;
+    }
+
+    .recent-orders table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      text-align: left;
+    }
+
+    .recent-orders th, .recent-orders td {
+      padding: 10px;
+      border-bottom: 1px solid #334155;
+      font-size: 0.9rem;
+    }
+
+    .recent-orders th {
+      color: #94a3b8;
+    }
+
+    /* Status Nişanları */
+    .status {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    .status.completed { background-color: #065f46; color: #34d399; }
+    .status.pending { background-color: #78350f; color: #fbbf24; }
+  </style>
+</head>
+<body>
+
+  <!-- ƏSAS GRID KONTEYNERİ -->
+  <div class="dashboard">
+
+    <!-- HEADER: grid-column: 1 / 3 -->
+    <header class="card header">
+      <h1>Admin panel</h1>
+    </header>
+
+    <!-- SIDEBAR: grid-column: 1 / 2 -->
+    <aside class="card sidebar">
+      <ul>
+        <li>📊 Dashboard</li>
+        <li>📁 Portfel</li>
+        <li>✉️ Mesajlar</li>
+        <li>⚙️ Tənzimləmələr</li>
+      </ul>
+    </aside>
+
+    <!-- MAIN CONTENT (Nested Grid) -->
+    <main class="main-content">
+
+      <!-- Stat Kartı 1 -->
+      <div class="card stat-card">
+        <h3>Ümumi Gəlir</h3>
+        <div class="value">$12,450</div>
+      </div>
+
+      <!-- Stat Kartı 2 -->
+      <div class="card stat-card">
+        <h3>Aktiv Layihələr</h3>
+        <div class="value">8 Layihə</div>
+      </div>
+
+      <!-- Stat Kartı 3 -->
+      <div class="card stat-card">
+        <h3>Yeni Müraciətlər</h3>
+        <div class="value">24 Mesaj</div>
+      </div>
+
+      <!-- Qrafik Bloku: grid-column: 1 / 3, grid-row: span 2 -->
+      <div class="card chart-box">
+        <h3>Aylıq Ziyarətçi Qrafiki</h3>
+        <div class="chart-placeholder">
+          <ul>
+            <li>Yatırımlar</li>
+            <li>Xərclər</li>
+            <li>İşçilər</li>
+            <li>Reklamlar</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Sağ tərəfdəki Bildiriş Paneli -->
+      <div class="card stat-card">
+        <h3>Sistem Statusu</h3>
+        <p style="color: #34d399; margin-top: 8px;">● Bütün serverlər aktivdir</p>
+      </div>
+
+      <div class="card stat-card">
+        <h3>Son Yenilənmə</h3>
+        <p style="color: #94a3b8; margin-top: 8px;">2 dəqiqə əvvəl</p>
+      </div>
+
+      <!-- Cədvəl: grid-column: 1 / 4 -->
+      <div class="card recent-orders">
+        <h3>Son Əməliyyatlar</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Müştəri</th>
+              <th>Xidmət</th>
+              <th>Məbləğ</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ali Mammadov</td>
+              <td>Web Development</td>
+              <td>$1,200</td>
+              <td><span class="status completed">Tamamlandı</span></td>
+            </tr>
+            <tr>
+              <td>Leyla Aliyeva</td>
+              <td>UI/UX Design</td>
+              <td>$850</td>
+              <td><span class="status pending">Gözləyir</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
