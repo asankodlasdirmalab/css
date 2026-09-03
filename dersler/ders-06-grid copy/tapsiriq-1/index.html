@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Məhsul Detalı - Positioning Təcrübəsi</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #0b0f19;
+      color: #f1f5f9;
+      padding: 40px 20px 600px;
+    }
+
+    /* 1. FIXED (Səbət Düyməsi) */
+    .fixed-cart {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #38bdf8;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+      z-index: 999;
+      border: none;
+    }
+
+    /* Fixed Düymə üzərindəki Absolute Sayğac */
+    .cart-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background-color: #ef4444;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: bold;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ƏSAS SƏHİFƏ STRUKTURU */
+    .store-layout {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* 2. RELATIVE & ABSOLUTE (Məhsul Qalereyası) */
+    .gallery-column {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .image-card {
+      position: relative; /* Absolute lövbəri */
+      width: 100%;
+      height: 420px;
+      background-color: #161f30;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #233047;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Sol Üst Künc: Endirim Badge */
+    .discount-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background-color: #ef4444;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      z-index: 2;
+    }
+
+    /* Sağ Üst Künc: Sevimli Düyməsi */
+    .fav-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    /* Aşağıya bərkidilmiş etiket */
+    .card-footer-tag {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: rgba(11, 15, 25, 0.85);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #94a3b8;
+      z-index: 2;
+    }
+
+    /* 3. STICKY (Sifariş Paneli) */
+    .checkout-column {
+      position: sticky;
+      top: 30px; /* Səhifə sürüşəndə yuxarıdan 30px məsafədə yapışır */
+      background-color: #161f30;
+      border: 1px solid #233047;
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .checkout-column h1 {
+      font-size: 1.6rem;
+      line-height: 1.2;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #38bdf8;
+    }
+
+    .buy-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      background-color: #10b981;
+      border: none;
+      color: #0b0f19;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .buy-btn:hover {
+      background-color: #059669;
+    }
+
+    /* 4. Z-INDEX OVERLAY TEST (Rəng Seçimi) */
+    .color-picker {
+      position: relative;
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+
+    .swatch {
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 3px solid #161f30;
+      cursor: pointer;
+    }
+
+    .c1 { left: 0px; background-color: #ef4444; z-index: 1; }
+    .c2 { left: 22px; background-color: #3b82f6; z-index: 2; }
+    .c3 { left: 44px; background-color: #10b981; z-index: 3; }
+  </style>
+</head>
+<body>
+
+  <!-- 1. FIXED BUTTON -->
+  <button class="fixed-cart">
+    🛒
+    <span class="cart-count">3</span>
+  </button>
+
+  <div class="store-layout">
+
+    <!-- SOL TƏRƏF: ŞƏKİLLƏR (Uzun qalereya - scroll üçün) -->
+    <div class="gallery-column">
+      
+      <div class="image-card">
+        <span class="discount-badge">-20% ENDİRİM</span>
+        <button class="fav-btn">❤️</button>
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" alt="">
+        <span class="card-footer-tag">Əsas Görünüş</span>
+      </div>
+
+      <div class="image-card">
+        <span class="discount-badge">PREMIUM</span>
+        <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=80" alt="">
+        <span class="card-footer-tag">Yan Bucaq</span>
+      </div>
+
+      <div class="image-card">
+        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80" alt="">
+        <span class="card-footer-tag">Alt Daban Düzülüşü</span>
+      </div>
+
+    </div>
+
+    <!-- SAĞ TƏRƏF: STICKY PANEL -->
+    <aside class="checkout-column">
+      <h1>Sport Edition V2</h1>
+      <div class="price">$149.99</div>
+
+      <!-- z-index nümunəsi (üst-üstə dairələr) -->
+      <div>
+        <label style="font-size: 0.85rem; color: #94a3b8; display: block; margin-bottom: 8px;">Rəng variantları (z-index)</label>
+        <div class="color-picker">
+          <div class="swatch c1"></div>
+          <div class="swatch c2"></div>
+          <div class="swatch c3"></div>
+        </div>
+      </div>
+
+      <button class="buy-btn">Səbətə Əlavə Et</button>
+    </aside>
+
+  </div>
+
+</body>
+</html>
