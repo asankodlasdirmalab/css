@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Store | Premium Avadanlıqlar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+    }
+
+    /* 1. NAVBAR (TOP CENTER, NO ROUNDED BG, SCALE ON HOVER) */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      color: #475569;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      background: none;
+      padding: 4px 8px;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #0284c7;
+      transform: scale(1.15);
+    }
+
+    /* 2. HERO / BANNER */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+      color: #0f172a;
+    }
+
+    .hero p {
+      color: #64748b;
+      font-size: 1.05rem;
+    }
+
+    /* 3. MAIN PRODUCT GRID */
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 28px;
+      margin-bottom: 70px;
+    }
+
+    /* PRODUCT CARD: TRANSITION & SCALE */
+    .product-card {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                  box-shadow 0.35s ease,
+                  border-color 0.35s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: #0284c7;
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
+    }
+
+    /* CARD IMAGE STAGE: ROTATE, TRANSLATE & SCALEX */
+    .img-stage {
+      height: 220px;
+      background-color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.15));
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .product-card:hover .product-img {
+      transform: translateY(-10px) rotate(-8deg) scale(1.1);
+    }
+
+    .shadow-drop {
+      width: 70px;
+      height: 10px;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      margin-top: 8px;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .product-card:hover .shadow-drop {
+      transform: scaleX(1.4);
+      opacity: 0.15;
+    }
+
+    /* FLOATING BADGE */
+    .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background-color: #0284c7;
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    /* CARD BODY */
+    .card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .category {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .product-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0284c7;
+    }
+
+    /* BUY BUTTON: TRANSLATEX */
+    .btn-cart {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .btn-cart .icon {
+      transition: transform 0.25s ease;
+    }
+
+    .product-card:hover .btn-cart {
+      background-color: #0284c7;
+      border-color: #0284c7;
+      color: #ffffff;
+    }
+
+    .product-card:hover .btn-cart .icon {
+      transform: translateX(4px);
+    }
+
+    /* 4. ORDERS & SPECIFICATIONS TABLE WITH TRANSFORM TRANSITIONS */
+    .table-section {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+    }
+
+    .table-section h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .spec-table th, .spec-table td {
+      padding: 14px 18px;
+    }
+
+    /* :first-child */
+    .spec-table tr:first-child {
+      background-color: #f1f5f9;
+      color: #0284c7;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .spec-table tr:first-child th:first-child {
+      border-top-left-radius: 10px;
+    }
+
+    .spec-table tr:first-child th:last-child {
+      border-top-right-radius: 10px;
+    }
+
+    /* :nth-child(even) */
+    .spec-table tr:nth-child(even):not(:first-child) {
+      background-color: #f8fafc;
+    }
+
+    .spec-table tr:not(:first-child) {
+      border-bottom: 1px solid #e2e8f0;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    }
+
+    /* TABLE ROW TRANSFORM: TRANSLATEX & SCALE ON HOVER */
+    .spec-table tr:hover:not(:first-child) {
+      transform: translateX(8px) scale(1.005);
+      background-color: #e0f2fe;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+    }
+
+    /* :last-child */
+    .spec-table tr:last-child td {
+      border-bottom: 2px solid #0284c7;
+      font-weight: 600;
+    }
+
+    .status-ok {
+      color: #059669;
+      font-weight: 700;
+    }
+
+    .status-wait {
+      color: #d97706;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP CENTER NAVBAR -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="#">Məhsullar</a></li>
+      <li><a href="#">Aksesuarlar</a></li>
+      <li><a href="#">Sifarişlər</a></li>
+      <li><a href="#">Dəstək</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Elektronik Cihazlar</h1>
+    <p>Sizə lazım olan qulaqlıqlar, klaviaturalar və aksesuarlar.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- 1. PRODUCT GRID SECTION -->
+    <div class="product-grid">
+
+      <!-- Məhsul 1 -->
+      <div class="product-card">
+        <span class="badge">Top Satış</span>
+        <div class="img-stage">
+          <img class="product-img" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80" alt="Qulaqlıq">
+          <div class="shadow-drop"></div>
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="category">Audio</div>
+            <h3 class="product-title">Studio Pro X Səs Sistemi</h3>
+          </div>
+          <div class="card-footer">
+            <span class="price">$289</span>
+            <button class="btn-cart">
+              <span>Səbət</span>
+              <span class="icon">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Məhsul 2 -->
+      <div class="product-card">
+        <span class="badge">Yeni</span>
+        <div class="img-stage">
+          <img class="product-img" src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=400&q=80" alt="Siçan">
+          <div class="shadow-drop"></div>
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="category">Periferiya</div>
+            <h3 class="product-title">Ergo Wireless Mouse</h3>
+          </div>
+          <div class="card-footer">
+            <span class="price">$89</span>
+            <button class="btn-cart">
+              <span>Səbət</span>
+              <span class="icon">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Məhsul 3 -->
+      <div class="product-card">
+        <div class="img-stage">
+          <img class="product-img" src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=80" alt="Klaviatura">
+          <div class="shadow-drop"></div>
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="category">Aparat</div>
+            <h3 class="product-title">Mexaniki RGB Klaviatura</h3>
+          </div>
+          <div class="card-footer">
+            <span class="price">$149</span>
+            <button class="btn-cart">
+              <span>Səbət</span>
+              <span class="icon">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Məhsul 4 -->
+      <div class="product-card">
+        <div class="img-stage">
+          <img class="product-img" src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80" alt="Saat">
+          <div class="shadow-drop"></div>
+        </div>
+        <div class="card-body">
+          <div>
+            <div class="category">Ağıllı Cihaz</div>
+            <h3 class="product-title">Apex Smart Track V4</h3>
+          </div>
+          <div class="card-footer">
+            <span class="price">$199</span>
+            <button class="btn-cart">
+              <span>Səbət</span>
+              <span class="icon">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 2. TABLE SECTION -->
+    <div class="table-section">
+      <h2>Məhsul Texniki Xüsusiyyətləri və Anbar Statusu</h2>
+      <table class="spec-table">
+        <tr>
+          <th>Məhsul Modeli</th>
+          <th>Kateqoriya</th>
+          <th>Bağlantı</th>
+          <th>Zəmanət</th>
+          <th>Anbar</th>
+        </tr>
+        <tr>
+          <td>Studio Pro X</td>
+          <td>Audio</td>
+          <td>Bluetooth 5.3 / Type-C</td>
+          <td>2 İl Rəsmi</td>
+          <td><span class="status-ok">Mövcuddur (24 ədəd)</span></td>
+        </tr>
+        <tr>
+          <td>Ergo Wireless Mouse</td>
+          <td>Periferiya</td>
+          <td>2.4GHz Wireless</td>
+          <td>1 İl Rəsmi</td>
+          <td><span class="status-ok">Mövcuddur (18 ədəd)</span></td>
+        </tr>
+        <tr>
+          <td>Mexaniki RGB Klaviatura</td>
+          <td>Aparat</td>
+          <td>Örülmüş USB Kabel</td>
+          <td>2 İl Rəsmi</td>
+          <td><span class="status-wait">Məhdud Sayda (3 ədəd)</span></td>
+        </tr>
+        <tr>
+          <td>Apex Smart Track V4</td>
+          <td>Ağıllı Cihaz</td>
+          <td>Bluetooth / WiFi / NFC</td>
+          <td>2 İl Rəsmi</td>
+          <td><span class="status-ok">Mövcuddur (40 ədəd)</span></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+</body>
+</html>
