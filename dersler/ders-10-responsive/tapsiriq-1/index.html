@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Wireframe Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    body {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wrapper {
+      max-width: 1000px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* 1. HEADER */
+    .header {
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .search-input {
+      padding: 8px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    /* 2. STATS (4 SÜTUN) */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .stat-title {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    .stat-num {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    /* 3. MAIN SPLIT (2 SÜTUN) */
+    .main-split {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+    }
+
+    .post-card {
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .post-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .side-card {
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .notice {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    /* 4. ACTIONS (3 SÜTUN) */
+    .actions-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .action-card {
+      background-color: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn {
+      background-color: #0284c7;
+      color: #ffffff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    /* 
+      ====================================
+      RESPONSIVE BREAKPOINTS
+      ====================================
+    */
+
+    /* PLANŞET (max-width: 850px) */
+    @media (max-width: 850px) {
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .main-split {
+        grid-template-columns: 1fr;
+      }
+
+      .actions-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .actions-card-last {
+        grid-column: 1 / -1;
+      }
+    }
+
+    /* MOBİL (max-width: 550px) */
+    @media (max-width: 550px) {
+      body {
+        padding: 12px;
+      }
+
+      .header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+      }
+
+      .search-input {
+        width: 100%;
+      }
+
+      .stats-row {
+        grid-template-columns: 1fr;
+      }
+
+      .actions-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- 1. HEADER -->
+    <header class="header">
+      <div class="brand">Admin Panel</div>
+      <input type="text" class="search-input" placeholder="Axtarış...">
+    </header>
+
+    <!-- 2. STATS (4 Sütun -> 2 Sütun -> 1 Sütun) -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-title">İstifadəçilər</span>
+        <span class="stat-num">1,240</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-title">Gəlir</span>
+        <span class="stat-num">$3,450</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-title">Sifarişlər</span>
+        <span class="stat-num">84</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-title">Məktublar</span>
+        <span class="stat-num">12</span>
+      </div>
+    </div>
+
+    <!-- 3. MAIN CONTENT & SIDEBAR (2 Sütun -> 1 Sütun) -->
+    <div class="main-split">
+      <div class="post-card">
+        <h3>Əsas Məqalə və ya Xəbər</h3>
+        <img class="post-img" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Laptop">
+        <p style="color: #64748b; font-size: 0.9rem;">
+          Bu hissə böyük ekranda sol tərəfdə qalır, planşet və ya mobil ekrana keçdikdə isə sağdakı bloku öz altına alır.
+        </p>
+        <button class="btn" style="align-self: flex-start;">Daha Çox</button>
+      </div>
+
+      <div class="side-card">
+        <h4>Bildirişlər</h4>
+        <div class="notice">Yeni istifadəçi qeydiyyatdan keçdi.</div>
+        <div class="notice">Ödəniş uğurla qəbul edildi.</div>
+        <div class="notice">Sistem yenilənməsi tamamlandı.</div>
+      </div>
+    </div>
+
+    <!-- 4. BOTTOM ACTION CARDS (3 Sütun -> 2 Sütun -> 1 Sütun) -->
+    <div class="actions-row">
+      <div class="action-card">
+        <span>Hesabat PDF</span>
+        <button class="btn">Yüklə</button>
+      </div>
+      <div class="action-card">
+        <span>Verilənlər Bazası</span>
+        <button class="btn">Yenilə</button>
+      </div>
+      <div class="action-card actions-card-last">
+        <span>Təhlükəsizlik</span>
+        <button class="btn">Yoxla</button>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
